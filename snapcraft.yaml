@@ -1,0 +1,65 @@
+name: curtail
+base: core22
+adopt-info: curtail
+grade: stable
+confinement: strict
+compression: lzo
+architectures:
+  - build-on: amd64
+  - build-on: armhf
+  - build-on: arm64
+  
+slots:
+  curtail:
+    interface: dbus
+    bus: session
+    name: com.github.huluti.Curtail
+
+environment:
+  # WORKAROUND: Add python modules in Snap to search path
+  PYTHONPATH: ${SNAP}/usr/lib/python3/dist-packages:$PYTHONPATH
+
+apps:
+  curtail:
+    command: usr/bin/curtail
+    extensions: [gnome]
+    plugs:
+      - home
+      - raw-usb
+      - network
+      - network-status
+      - optical-drive
+      - removable-media
+    common-id: com.github.huluti.Curtail
+    desktop: usr/share/applications/com.github.huluti.Curtail.desktop
+    
+    
+parts:
+  curtail:
+    after: [oxipng]
+    source: https://github.com/Huluti/Curtail.git
+    plugin: meson
+    parse-info: [usr/share/metainfo/com.github.huluti.Curtail.appdata.xml]
+    meson-parameters:
+      - --prefix=/snap/curtail/current/usr
+    stage-packages:
+      - pngquant
+      - scour
+      - jpegoptim
+      - libwebp7
+    override-pull: |
+      craftctl default
+      craftctl set version=$(git describe --tags --abbrev=0)
+      sed -e 's|Icon=com.github.huluti.Curtail|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.huluti.Curtail.svg|' -i data/com.github.huluti.Curtail.desktop.in
+    override-build: |
+      craftctl default
+      # WORKAROUND: Use python from search path, the path detected by meson doesn't exist when running the Snap
+      sed -e '1c#!/usr/bin/env python3' -i ${CRAFT_PART_INSTALL}/snap/curtail/current/usr/bin/curtail
+    organize:
+      snap/curtail/current/usr: usr
+    
+  oxipng:
+    source: https://github.com/shssoichiro/oxipng.git
+    plugin: rust
+    build-packages:
+      - cargo

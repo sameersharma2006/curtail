@@ -28,6 +28,7 @@ apps:
       - network-status
       - optical-drive
       - removable-media
+      - unity7
     common-id: com.github.huluti.Curtail
     desktop: usr/share/applications/com.github.huluti.Curtail.desktop
 
@@ -51,7 +52,7 @@ parts:
 
   oxipng:
     source: https://github.com/shssoichiro/oxipng.git
-    source-tag: v8.0.0
+    source-tag: v8.0.0 #V 9.0.0 Released !
     after: [curtail]
     plugin: rust
     build-packages:
@@ -64,12 +65,10 @@ parts:
       - pngquant
       - scour
       - jpegoptim
-      - libwebp7
+      - webp-pixbuf-loader
     prime:
-      - usr/lib/*/libjpeg.so*
-      - usr/lib/*/libgomp.so*
-      - usr/lib/*/libwebp.so*
       - usr/lib/*/libimagequant.so*
+      - usr/lib/*/gdk-pixbuf-2.0
       - usr/lib/python3
       - usr/bin
 

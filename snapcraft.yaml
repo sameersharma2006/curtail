@@ -52,7 +52,7 @@ parts:
 
   oxipng:
     source: https://github.com/shssoichiro/oxipng.git
-    source-tag: v8.0.0 #V 9.0.0 Released !
+    source-tag: v8.0.0 # V9.0.0 Released !
     after: [curtail]
     plugin: rust
     build-packages:
@@ -65,11 +65,8 @@ parts:
       - pngquant
       - scour
       - jpegoptim
-      - webp-pixbuf-loader
     prime:
-      - usr/lib/*/libimagequant.so*
-      - usr/lib/*/gdk-pixbuf-2.0
-      - usr/lib/python3
+      - usr/lib
       - usr/bin
 
   cleanup:

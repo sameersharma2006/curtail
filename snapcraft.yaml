@@ -35,7 +35,7 @@ apps:
 parts:
   curtail:
     source: https://github.com/Huluti/Curtail.git
-    source-tag: 1.7.0
+    source-tag: 1.8.0
     plugin: meson
     parse-info: [usr/share/metainfo/com.github.huluti.Curtail.appdata.xml]
     meson-parameters:
@@ -52,7 +52,7 @@ parts:
 
   oxipng:
     source: https://github.com/shssoichiro/oxipng.git
-    source-tag: v8.0.0 # V9.0.0 Released !
+    source-tag: v9.0.0
     after: [curtail]
     plugin: rust
     build-packages:

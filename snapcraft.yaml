@@ -26,7 +26,6 @@ apps:
       - network
       - network-bind
       - network-status
-      - optical-drive
       - removable-media
       - unity7
     common-id: com.github.huluti.Curtail
@@ -66,19 +65,9 @@ parts:
       - scour
       - jpegoptim
     prime:
-      - usr/lib
-      - usr/bin
-
-  cleanup:
-    after:
-      - deps
-    plugin: nil
-    build-snaps:
-      - gnome-42-2204
-      - core22
-      - gtk-common-themes
-    override-prime: |
-      set -eux
-      for snap in "gnome-42-2204" "core22" "gtk-common-themes"; do
-          cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$CRAFT_PRIME/{}" \;
-      done
+      - usr/lib/*/libimagequant*
+      - usr/lib/python3
+      - usr/bin/dh_scour
+      - usr/bin/jpegoptim
+      - usr/bin/scour
+      - usr/bin/pngquant

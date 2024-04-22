@@ -35,6 +35,7 @@ parts:
   curtail:
     source: https://github.com/Huluti/Curtail.git
     source-tag: 1.9.1
+    source-depth: 1
     plugin: meson
     parse-info: [usr/share/metainfo/com.github.huluti.Curtail.appdata.xml]
     meson-parameters:

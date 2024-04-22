@@ -5,9 +5,6 @@ on:
     branches:
       - edge
       - stable
-  schedule:
-    # Daily for now
-    - cron: '9 7 * * *'    
   workflow_dispatch:
 
 jobs:

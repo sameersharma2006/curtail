@@ -54,9 +54,6 @@ parts:
     source: https://github.com/shssoichiro/oxipng.git
     source-tag: 'v9.1.0'
     source-depth: 1
-# ext:updatesnap
-#   version-format:
-#     ignore: true  
     after: [curtail]
     plugin: rust
     build-packages:

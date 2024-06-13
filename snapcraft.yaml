@@ -1,13 +1,12 @@
 name: curtail
-base: core22
+base: core24
 adopt-info: curtail
 grade: stable
 confinement: strict
 compression: lzo
-architectures:
-  - build-on: amd64
-  - build-on: armhf
-  - build-on: arm64
+platforms:
+  amd64:
+  arm64:
 
 slots:
   curtail:
@@ -56,8 +55,6 @@ parts:
     source-depth: 1
     after: [curtail]
     plugin: rust
-    build-packages:
-      - cargo
 
   deps:
     after: [oxipng]
@@ -72,4 +69,7 @@ parts:
       - usr/bin/dh_scour
       - usr/bin/jpegoptim
       - usr/bin/scour
+      - usr/share/scour
       - usr/bin/pngquant
+      - usr/lib/*/libpng*
+      - usr/lib/*/libjpeg*

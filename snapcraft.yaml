@@ -20,6 +20,7 @@ apps:
     extensions: [gnome]
     environment:
       PYTHONPATH: ${SNAP}/usr/lib/python3/dist-packages:$PYTHONPATH
+      XKB_CONFIG_ROOT: $SNAP/usr/share/X11/xkb
     plugs:
       - home
       - network
@@ -63,6 +64,7 @@ parts:
       - pngquant
       - scour
       - jpegoptim
+      - xkb-data
     prime:
       - usr/lib/*/libimagequant*
       - usr/lib/python3
@@ -73,3 +75,4 @@ parts:
       - usr/bin/pngquant
       - usr/lib/*/libpng*
       - usr/lib/*/libjpeg*
+      - usr/share/X11/xkb

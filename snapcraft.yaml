@@ -1,13 +1,12 @@
 name: curtail
-base: core22
+base: core24
 adopt-info: curtail
 grade: stable
 confinement: strict
 compression: lzo
-architectures:
-  - build-on: amd64
-  - build-on: armhf
-  - build-on: arm64
+platforms:
+  amd64:
+  arm64:
 
 slots:
   curtail:
@@ -21,6 +20,7 @@ apps:
     extensions: [gnome]
     environment:
       PYTHONPATH: ${SNAP}/usr/lib/python3/dist-packages:$PYTHONPATH
+      XKB_CONFIG_ROOT: $SNAP/usr/share/X11/xkb
     plugs:
       - home
       - network
@@ -56,8 +56,6 @@ parts:
     source-depth: 1
     after: [curtail]
     plugin: rust
-    build-packages:
-      - cargo
 
   deps:
     after: [oxipng]
@@ -66,10 +64,15 @@ parts:
       - pngquant
       - scour
       - jpegoptim
+      - xkb-data
     prime:
       - usr/lib/*/libimagequant*
       - usr/lib/python3
       - usr/bin/dh_scour
       - usr/bin/jpegoptim
       - usr/bin/scour
+      - usr/share/scour
       - usr/bin/pngquant
+      - usr/lib/*/libpng*
+      - usr/lib/*/libjpeg*
+      - usr/share/X11/xkb

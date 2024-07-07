@@ -8,6 +8,9 @@ platforms:
   amd64:
   arm64:
 
+environment:
+  XKB_CONFIG_ROOT: $SNAP/usr/share/X11/xkb
+
 slots:
   curtail:
     interface: dbus
@@ -20,7 +23,6 @@ apps:
     extensions: [gnome]
     environment:
       PYTHONPATH: ${SNAP}/usr/lib/python3/dist-packages:$PYTHONPATH
-      XKB_CONFIG_ROOT: $SNAP/usr/share/X11/xkb
     plugs:
       - home
       - network
@@ -39,16 +41,16 @@ parts:
     plugin: meson
     parse-info: [usr/share/metainfo/com.github.huluti.Curtail.appdata.xml]
     meson-parameters:
-      - --prefix=/snap/curtail/current/usr
+      - --prefix=/usr
       - --buildtype=release
     override-pull: |
       craftctl default
       sed -e 's|Icon=com.github.huluti.Curtail|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.huluti.Curtail.svg|' -i data/com.github.huluti.Curtail.desktop.in
-    override-build: |
-      craftctl default
-      sed -e '1c#!/usr/bin/env python3' -i ${CRAFT_PART_INSTALL}/snap/curtail/current/usr/bin/curtail
-    organize:
-      snap/curtail/current/usr: usr
+    #override-build: |
+      #craftctl default
+      #sed -e '1c#!/usr/bin/env python3' -i ${CRAFT_PART_INSTALL}/snap/curtail/current/usr/bin/curtail
+    #organize:
+      #snap/curtail/current/usr: usr
 
   oxipng:
     source: https://github.com/shssoichiro/oxipng.git

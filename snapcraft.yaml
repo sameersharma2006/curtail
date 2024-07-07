@@ -41,16 +41,16 @@ parts:
     plugin: meson
     parse-info: [usr/share/metainfo/com.github.huluti.Curtail.appdata.xml]
     meson-parameters:
-      - --prefix=/usr
+      - --prefix=/snap/curtail/current/usr
       - --buildtype=release
     override-pull: |
       craftctl default
       sed -e 's|Icon=com.github.huluti.Curtail|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.huluti.Curtail.svg|' -i data/com.github.huluti.Curtail.desktop.in
-    #override-build: |
-      #craftctl default
-      #sed -e '1c#!/usr/bin/env python3' -i ${CRAFT_PART_INSTALL}/snap/curtail/current/usr/bin/curtail
-    #organize:
-      #snap/curtail/current/usr: usr
+    override-build: |
+      craftctl default
+      sed -e '1c#!/usr/bin/env python3' -i ${CRAFT_PART_INSTALL}/snap/curtail/current/usr/bin/curtail
+    organize:
+      snap/curtail/current/usr: usr
 
   oxipng:
     source: https://github.com/shssoichiro/oxipng.git

@@ -8,8 +8,8 @@ platforms:
   amd64:
   arm64:
 
-environment:
-  XKB_CONFIG_ROOT: $SNAP/usr/share/X11/xkb
+#environment:
+  #XKB_CONFIG_ROOT: $SNAP/usr/share/X11/xkb
 
 slots:
   curtail:
@@ -23,6 +23,7 @@ apps:
     extensions: [gnome]
     environment:
       PYTHONPATH: ${SNAP}/usr/lib/python3/dist-packages:$PYTHONPATH
+      DISABLE_X11: 1
     plugs:
       - home
       - network
@@ -66,7 +67,7 @@ parts:
       - pngquant
       - scour
       - jpegoptim
-      - xkb-data
+      #- xkb-data
     prime:
       - usr/lib/*/libimagequant*
       - usr/lib/python3
@@ -77,4 +78,4 @@ parts:
       - usr/bin/pngquant
       - usr/lib/*/libpng*
       - usr/lib/*/libjpeg*
-      - usr/share/X11/xkb
+      #- usr/share/X11/xkb

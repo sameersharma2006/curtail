@@ -33,7 +33,7 @@ apps:
 parts:
   curtail:
     source: https://github.com/Huluti/Curtail.git
-    source-tag: '1.11.0'
+    source-tag: '1.11.1'
     source-depth: 1
     plugin: meson
     parse-info: [usr/share/metainfo/com.github.huluti.Curtail.appdata.xml]

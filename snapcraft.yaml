@@ -73,3 +73,16 @@ parts:
       - usr/bin/pngquant
       - usr/lib/*/libpng*
       - usr/lib/*/libjpeg*
+
+  webp:
+    after: [deps]
+    plugin: nil
+    stage-packages:
+      - webp
+    prime:
+      - usr/bin
+      - usr/lib/*/libwebp*
+      - usr/lib/*/libsharpyuv*
+      - usr/lib/*/libwebpmux*
+      - usr/lib/*/libwebpdemux*
+      - usr/lib/*/libgif*

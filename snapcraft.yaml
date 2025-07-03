@@ -63,6 +63,8 @@ parts:
       - pngquant
       - scour
       - jpegoptim
+      - libwebp7
+      - libsharpyuv0
     prime:
       - usr/lib/*/libimagequant*
       - usr/lib/python3
@@ -73,3 +75,5 @@ parts:
       - usr/bin/pngquant
       - usr/lib/*/libpng*
       - usr/lib/*/libjpeg*
+      - usr/lib/*/libwebp*
+      - usr/lib/*/libsharpyuv*

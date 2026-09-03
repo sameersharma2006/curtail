@@ -51,7 +51,7 @@ parts:
 
   oxipng:
     source: https://github.com/shssoichiro/oxipng.git
-    source-tag: 'v10.2.0'
+    source-tag: 'v10.2.1'
     source-depth: 1
     after: [curtail]
     plugin: rust
